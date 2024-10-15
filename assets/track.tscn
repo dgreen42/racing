@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddntjemtty5kq"]
+
+[ext_resource type="Texture2D" uid="uid://d0ujmgihkm6sq" path="res://art/track1.png" id="1_sdq02"]
+
+[node name="Track" type="StaticBody2D"]
+scale = Vector2(2, 2)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -817.0
+offset_top = -633.0
+offset_right = 2912.0
+offset_bottom = 1969.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_sdq02")
+
+[node name="ColOuter" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(32, 40, 32, 1048, 49.5, 1047.5, 50.5, 589.5, 719.5, 589.5, 720, 460.5, 50, 460.5, 49.5, 60, 1871, 59.5, 1869.5, 460.5, 1200, 460.5, 1200, 589.5, 1869, 589.5, 1869.5, 1030.5, 49.5, 1030.5, 88, 1056, 1880, 1056, 1880, 24)
+
+[node name="ColInner" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(210, 180.5, 210.5, 279, 928, 280, 930, 780.5, 211, 780, 210, 879.5, 1712, 880, 1711.5, 779.5, 989.5, 779, 990, 280, 1712, 280, 1711.5, 179)

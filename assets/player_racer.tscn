@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://boteo188ptkcs"]
+
+[ext_resource type="Texture2D" uid="uid://bejxfcvqb5yep" path="res://art/racer1.png" id="1_abv1c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_86kp3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_abv1c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PlayerRacer" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(0.75, 0.75)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_86kp3")
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-69.3333, -8, -42.6667, -40, 50.6667, -40, 64, -5.33333, 64, 5.33333, 50.6667, 40, -42.6667, 40, -69.3333, 8)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.5, 1.5)

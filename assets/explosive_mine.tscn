@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://0kfcbxikbg7t"]
+
+[ext_resource type="Texture2D" uid="uid://c8six88fnvfou" path="res://art/explosive_mine1.png" id="1_eb5r0"]
+[ext_resource type="Script" path="res://assets/ExplosiveMine.cs" id="1_wrgpw"]
+[ext_resource type="Texture2D" uid="uid://di41ht4ahlynk" path="res://art/explosive_mine2.png" id="2_gth2d"]
+[ext_resource type="Texture2D" uid="uid://cnsoeuc8kx53d" path="res://art/explosive_mine_exp1.png" id="2_jdrfy"]
+[ext_resource type="Texture2D" uid="uid://dcfwfmnouvuau" path="res://art/explosive_mine_exp2.png" id="3_xy1x7"]
+[ext_resource type="Texture2D" uid="uid://cke4j6cwon8hq" path="res://art/explosive_mine_exp3.png" id="4_3xmwl"]
+[ext_resource type="Texture2D" uid="uid://df4mvyr6gvlen" path="res://art/explosive_mine_exp4.png" id="5_w04qm"]
+[ext_resource type="Texture2D" uid="uid://4ms424ktlimx" path="res://art/explosive_mine_exp5.png" id="6_8h5x1"]
+[ext_resource type="Texture2D" uid="uid://p5bw30cfoftq" path="res://art/explosive_mine_exp6.png" id="7_dqsua"]
+[ext_resource type="Texture2D" uid="uid://dst0ip1mnn7nh" path="res://art/explosive_mine_exp7.png" id="8_kifq0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6lb3"]
+size = Vector2(8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6rtun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jdrfy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xy1x7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3xmwl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_w04qm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8h5x1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dqsua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kifq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kifq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kifq0")
+}],
+"loop": true,
+"name": &"Explode",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_eb5r0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gth2d")
+}],
+"loop": true,
+"name": &"Flash",
+"speed": 2.0
+}]
+
+[node name="ExplosiveMine" type="Area2D"]
+texture_filter = 1
+scale = Vector2(3, 3)
+script = ExtResource("1_wrgpw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.96046e-08, -5.96046e-08)
+shape = SubResource("RectangleShape2D_o6lb3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6rtun")
+animation = &"Explode"
+
+[node name="AnimationTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="PlayerCollision" from="." to="." method="RegisterHit"]
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="timeout" from="AnimationTimer" to="." method="OnAnimationTimerTimeout"]

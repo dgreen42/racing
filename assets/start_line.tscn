@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bikple0k3rf4q"]
+
+[ext_resource type="Texture2D" uid="uid://8s5kuvgmi01x" path="res://art/start_line.png" id="1_sspu6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adpjk"]
+size = Vector2(40, 120)
+
+[node name="StartLine" type="StaticBody2D"]
+scale = Vector2(2, 2)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_sspu6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(20, 60)
+shape = SubResource("RectangleShape2D_adpjk")
+one_way_collision = true
